@@ -1,0 +1,14 @@
+.signin_button {
+    background-color: #1F51FF;
+    color: white; /* Button text color */
+    border: none; /* Removes default border */
+   
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor changes to pointer on hover */
+    border-radius: 5px; /* Optional: Rounded corners */
+    transition: opacity 0.3s; /* Optional: Smooth transition effect */
+  }
+  
+  .signin_button:hover {
+    background-color: #0F52BA;
+  }

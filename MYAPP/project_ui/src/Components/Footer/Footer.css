@@ -1,0 +1,73 @@
+.footer {
+  background: linear-gradient(90deg, #251c2d, #c3b2ea);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  padding: 10px 0;
+  width: 100%;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
+  position: relative; /* ensures footer appears after scroll */
+  bottom: 0;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  flex-wrap: wrap;
+  
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer a:hover {
+  color: #00ffb3;
+  transition: color 0.3s ease;
+}
+
+.footer-left,
+.footer-center,
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+#whatsapp {
+  color: #09f35f;
+}
+
+#whatsapp:hover {
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+/* ❌ Remove fixed footer class effect */
+.fixed-footer {
+  position: relative; /* changed from fixed */
+  bottom: auto;
+}
+
+/* ✅ Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+  }
+}

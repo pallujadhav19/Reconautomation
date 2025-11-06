@@ -1,0 +1,33 @@
+/* LanguageOption.css */
+
+.custom-dropdown {
+  padding: 2px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s;
+  }
+  
+  .custom-dropdown:hover,
+  .custom-dropdown:focus {
+    border-color: #007bff;
+  }
+  
+  /* Style the dropdown arrow */
+  .custom-dropdown::after {
+    content: '\25BC'; /* Unicode character for down arrow */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  /* Style the options */
+  .custom-dropdown option {
+    background-color: #fff;
+    color: #333;
+  }
+  

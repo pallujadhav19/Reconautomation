@@ -1,0 +1,50 @@
+/* Container for the form */
+.form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card header */
+.form-container .card-header {
+    background-color: #4CAF50;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Form fields */
+.form-container .form-control {
+    margin-bottom: 15px;
+}
+
+/* Form labels */
+.form-container .form-label {
+    font-weight: bold;
+}
+
+/* Submit button */
+.form-container .btn-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #6a95b0;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.form-container .btn-primary:hover {
+    background-color: #56a9e8;
+}
+
+/* Error messages */
+.form-container .invalid-feedback {
+    display: block;
+    font-size: 0.9rem;
+    color: #dc3545;
+}

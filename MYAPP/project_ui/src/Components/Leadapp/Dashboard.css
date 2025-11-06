@@ -1,0 +1,14 @@
+.table-cell {
+    min-width: 120px; /* Adjust as needed */
+    max-width: 400px; /* Adjust as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .sticky-header {
+    position: sticky;
+    top: 0; /* The header will stick to the top */
+    background-color: white; /* Ensure the background is not transparent */
+    z-index: 1000; /* Optional: to make sure the header stays on top */
+  }
