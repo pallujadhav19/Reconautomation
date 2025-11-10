@@ -1,0 +1,43 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # allows manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # -------------------------------
+      # Backend (Django)
+      # -------------------------------
+      - name: Build Django Backend
+        run: docker build -t your-dockerhub-username/django-backend:latest ./backend
+
+      # -------------------------------
+      # Frontend (React)
+      # -------------------------------
+      - name: Build React Frontend
+        run: docker build -t your-dockerhub-username/react-frontend:latest ./frontend
+
+      # -------------------------------
+      # Login to Docker Hub
+      # -------------------------------
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # -------------------------------
+      # Push Images to Docker Hub
+      # -------------------------------
+      - name: Push Docker Images
+        run: |
+          docker push your-dockerhub-username/django-backend:latest
+          docker push your-dockerhub-username/react-frontend:latest
