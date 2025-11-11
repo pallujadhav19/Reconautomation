@@ -2,42 +2,43 @@ name: Build and Push Docker Images
 
 on:
   push:
+    branches: [ main ]  # Change if your main branch has a different name
+  pull_request:
     branches: [ main ]
-  workflow_dispatch:  # allows manual trigger
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      # -------------------------------
-      # Backend (Django)
-      # -------------------------------
-      - name: Build Django Backend
-        run: docker build -t your-dockerhub-username/django-backend:latest ./backend
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      # -------------------------------
-      # Frontend (React)
-      # -------------------------------
-      - name: Build React Frontend
-        run: docker build -t your-dockerhub-username/react-frontend:latest ./frontend
-
-      # -------------------------------
-      # Login to Docker Hub
-      # -------------------------------
-      - name: Login to Docker Hub
+      - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # -------------------------------
-      # Push Images to Docker Hub
-      # -------------------------------
-      - name: Push Docker Images
-        run: |
-          docker push your-dockerhub-username/django-backend:latest
-          docker push your-dockerhub-username/react-frontend:latest
+      # ---------- FRONTEND ----------
+      - name: Build and push FRONTEND image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./MYAPP/project_ui
+          file: ./MYAPP/project_ui/Dockerfile
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/reconautomation-frontend:latest
+
+      # ---------- BACKEND ----------
+      - name: Build and push BACKEND image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./MYAPP/project_ui_server
+          file: ./MYAPP/project_ui_server/Dockerfile
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/reconautomation-backend:latest
